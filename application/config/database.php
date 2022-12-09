@@ -70,10 +70,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
+$active_group = 'dev';//production
 $query_builder = TRUE;
 
-$db['default'] = array(
+$db['production'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'uptpuske_admin',//uptpuske_usermain
+	'password' => 'SAA9@GgB3;e',//7Fcc8807*12345
+	'database' => 'uptpuske_db',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+$db['dev'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',//uptpuske_usermain
@@ -94,3 +115,4 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
