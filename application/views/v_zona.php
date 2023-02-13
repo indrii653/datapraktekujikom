@@ -19,13 +19,7 @@
                                 <a class="d-inline-block" href="zona/detail/<?=$z->id?>">
                                     <h2><?=$z->judul;?></h2>
                                 </a>
-                                <p><?php echo strip_tags(substr(substr($z->deskripsi,0,200),0,strrpos(substr($z->deskripsi,0,200),' ')));?></p>
-                                <a href="zona/detail/<?=$z->id?>">
-                                  Baca Selanjutnya
-                                </a>                                
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
+                                <p><?php echo strip_tags(substr(substr($z->deskripsi,0,200),0,strrpos(substr($z->deskripsi,0,200),' ')));?></p>                               
                             </div>
                         </article>
                     <?php

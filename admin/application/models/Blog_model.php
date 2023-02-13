@@ -37,15 +37,7 @@ class Blog_model extends CI_Model
      */
     function blogListing($searchText = '', $page, $segment)
     {
-        $this->db->select('*');
-        $this->db->from('blog as BaseTbl');
-        if(!empty($searchText)) {
-            $likeCriteria = "(BaseTbl.taskTitle LIKE '%".$searchText."%')";
-            $this->db->where($likeCriteria);
-        }
-        $this->db->where('BaseTbl.isDeleted', 0);
-        $this->db->limit($page, $segment);
-        $query = $this->db->get();
+        $query = $this->db->get('blog', $segment, $page);
         
         $result = $query->result();        
         return $result;
@@ -82,7 +74,41 @@ class Blog_model extends CI_Model
         
         return $query->row();
     }
-    
+	function tampil_data($limit, $start){
+		$this->db->select('*');
+		$this->db->from('blog');
+		$this->db->limit($limit, $start);
+		return $this->db->get();
+	}
+
+	public function jumlah_data()
+    {
+        $this->db->select('id');
+        $this->db->from('blog');
+        return $this->db->get()->num_rows();
+    }
+
+	function data_detail($id){
+		return $this->db->get_where('blog', array('id'=>$id));
+	}
+ 
+	function input_data($data,$table){
+		$this->db->insert($table,$data);
+	}
+ 
+	function hapus_data($where,$table){
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+ 
+	function edit_data($where,$table){		
+		return $this->db->get_where($table,$where);
+	}
+ 
+	function update_data($where,$data,$table){
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}	
     
     /**
      * This function is used to update the task information
@@ -97,10 +123,10 @@ class Blog_model extends CI_Model
         return TRUE;
     }
 
-    function deletezona($id)
+    function deleteblog($id)
     {
         $this->db->where('id', $id);
-        $this->db->delete('zona');
+        $this->db->delete('blog');
         
         return $this->db->affected_rows();
     }

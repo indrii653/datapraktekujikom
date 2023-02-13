@@ -54,7 +54,7 @@ class Maklumat extends BaseController
             
             $data['records'] = $this->m->maklumatListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : maklumat';
+            $this->global['pageTitle'] = 'Setting : maklumat';
             
             $this->loadViews("maklumat/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Maklumat extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Maklumat';
+            $this->global['pageTitle'] = 'Setting : Add New Maklumat';
 
             $this->loadViews("maklumat/add", $this->global, NULL, NULL);
         }
@@ -151,7 +151,7 @@ class Maklumat extends BaseController
             
             $data['maklumatInfo'] = $this->m->getmaklumatInfo($maklumatId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Maklumat';
+            $this->global['pageTitle'] = 'Setting : Edit Maklumat';
             
             $this->loadViews("maklumat/edit", $this->global, $data, NULL);
         }

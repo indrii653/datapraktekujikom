@@ -54,7 +54,7 @@ class Zona extends BaseController
             
             $data['records'] = $this->z->zonaListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : zona';
+            $this->global['pageTitle'] = 'Setting : zona';
             
             $this->loadViews("zona/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Zona extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Zona';
+            $this->global['pageTitle'] = 'Setting : Add New Zona';
 
             $this->loadViews("zona/add", $this->global, NULL, NULL);
         }
@@ -146,7 +146,7 @@ class Zona extends BaseController
             
             $data['zonaInfo'] = $this->z->getzonaInfo($zonaId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit zona';
+            $this->global['pageTitle'] = 'Setting : Edit zona';
             
             $this->loadViews("zona/edit", $this->global, $data, NULL);
         }

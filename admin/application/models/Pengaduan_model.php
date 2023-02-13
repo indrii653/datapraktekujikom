@@ -97,10 +97,10 @@ class Pengaduan_model extends CI_Model
         return TRUE;
     }
 
-    function deletepengaduan($p, $id)
+    function deletepengaduan( $id)
     {
         $this->db->where('id', $id);
-        $this->db->update('pengaduan', $p);
+        $this->db->delete('pengaduan');
         
         return $this->db->affected_rows();
     }

@@ -54,7 +54,7 @@ class Kepuasan extends BaseController
             
             $data['records'] = $this->k->kepuasanListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Kepuasan';
+            $this->global['pageTitle'] = 'Setting : Kepuasan';
             
             $this->loadViews("kepuasan/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Kepuasan extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New IKM';
+            $this->global['pageTitle'] = 'Setting : Add New IKM';
 
             $this->loadViews("kepuasan/add", $this->global, NULL, NULL);
         }
@@ -150,7 +150,7 @@ class Kepuasan extends BaseController
             
             $data['kepuasanInfo'] = $this->k->getkepuasanInfo($kepuasanId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Kepuasan';
+            $this->global['pageTitle'] = 'Setting : Edit Kepuasan';
             
             $this->loadViews("kepuasan/edit", $this->global, $data, NULL);
         }

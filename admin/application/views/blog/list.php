@@ -77,10 +77,17 @@
                         {
                     ?>
                     <tr>
+                        
                         <td><img src="<?php echo base_url(); ?>../img/blog/<?=$record->foto?>" width="100px"></td>
                         <td><?php echo $record->tgl ?></td>
                         <td><?php echo $record->judul ?></td>
-                        <td><?php echo $record->p1 ?></td>
+                        <td><?php 
+                        $str = $record->p1;
+                        if(strlen($str) > 210){
+                            $str = substr($str, 0, 200) . '...';
+                        }
+                        echo $str;
+                        ?></td>
                         <td class="text-center">
                             <a class="btn btn-sm btn-info" href="<?php echo base_url().'blog/edit/'.$record->id; ?>" title="Edit"><i class="fa fa-pencil"></i></a>
                             <a class="btn btn-sm btn-danger deleteblog" href="<?php echo base_url().'blog/delete/'.$record->id; ?>" data-id="<?php echo $record->id; ?>" title="Delete"><i class="fa fa-trash"></i></a>
@@ -95,9 +102,11 @@
                 </div><!-- /.box-body -->
                 <div class="box-footer clearfix">
                     <?php echo $this->pagination->create_links(); ?>
+                    
                 </div>
               </div><!-- /.box -->
             </div>
+            
         </div>
     </section>
 </div>

@@ -14,141 +14,73 @@
                      </p>
                   </div>
                </div>
-               <div class="navigation-top">
-                  <div class="navigation-area">
-                     <div class="row">
-                        <div
-                           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                           <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="<?=base_url()?>img/post/back.png" alt="">
-                              </a>
-                           </div>
-                           <div class="arrow">
-                              <a href="#">
-                                 <span class="lnr text-white ti-arrow-left"></span>
-                              </a>
-                           </div>
-                           <div class="detials">
-                              <p>Postingan Sebelum</p>
-                              <a href="lokbul">
-                                 <h4></h4>
-                              </a>
-                           </div>
+            <div class="w3-container w3-center">
+                  <hr>
+               <div class="w3-row-padding">
+               </div> 
+               <div class="container">
+        <h1> <content_title;?></h1>
+        <div class="w3-panel w3-blue">
+            <p>Kolom Komentar:</p>
+        </div>
+        <form method="POST" action=" site_url('komentar/kirim') ?>">
+            <div class="w3-row-padding">
+                <div class="w3-half">
+                    <input type="hidden" value=" $content_id;?>" name="id">
+                    <input class="w3-input w3-border" type="text" placeholder="Nama" name="nama">
+                </div>
+                <div class="w3-half">
+                    <input class="w3-input w3-border" type="email" placeholder="Email" name="email">
+                </div>
+            </div>
+            <div class="w3-padding">
+                <textarea style="width: 100%;" name="isi"></textarea>
+            </div>
+            <button class="w3-button w3-block w3-blue w3-section w3-padding" type="submit">Kirim Komentar</button>
+        </form>
+    </div>
+    <?php
+        //$content_id =  $content_id;
+       // $query = $this->db->query("SELECT * FROM table_comment WHERE comment_status='0' AND comment_content_id = '$content_id'");
+       
+    ?>
+    <div class="container">
+        <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue">
+            <p>
+                <br><button class="w3-button w3-tiny w3-blue" onclick="document.getElementById(' $utama->comment_id?>').style.display='block'">Balas</button>
+            </p>
+        </div>
+    </div>
+       
+        <div class="container">
+            <div class="w3-panel w3-pale-blue w3-leftbar w3-border-blue child">
+            </div>
+        </div>
+      
+        <div id=" $utama->comment_id?>" class="w3-modal">
+            <div class="w3-modal-content modal">
+                <header class="w3-container w3-blue">
+                    <span onclick="document.getElementById(' $utama->comment_id?>').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h2>Balas Komentar</h2>
+                </header>
+                <div class="w3-container">
+                    <form class="w3-container" method="POST" action=" site_url('komentar/balas') ?>">
+                        <input type="hidden" name="comment_id" value=" $utama->comment_id?>">
+                        <input type="hidden" name="content_id" value=" $content_id?>">
+                        <div class="w3-section">
+                            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Nama" name="nama" required>
+                            <input class="w3-input w3-border" type="email" placeholder="Email" name="email" required> 
+                            <br>         
+                            <textarea style="width: 100%;" name="isi"></textarea>
+                            <button class="w3-button w3-block w3-blue w3-section w3-padding" type="submit">Kirim</button>
                         </div>
-                        <div
-                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                           <div class="detials">
-                              <p>Postingan Selanjutnya</p>
-                           </div>
-                           <div class="arrow">
-                              <a href="#">
-                                 <span class="lnr text-white ti-arrow-right"></span>
-                              </a>
-                           </div>
-                           <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="<?=base_url()?>img/post/next.png" alt="">
-                              </a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="comments-area">
-                  <h4></h4>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="img/comment/user.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#"></a>
-                                    </h5>
-                                    <p class="date"></p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase"></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#"></a>
-                                    </h5>
-                                    <p class="date"></p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase"></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="desc">
-                              <p class="comment">
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#"></a>
-                                    </h5>
-                                    <p class="date"></p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase"></a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="comment-form">
-                  <h4>Tinggalkan Komentar</h4>
-                  <form class="form-contact comment_form" action="#" id="commentForm">
-                     <div class="row">
-                        <div class="col-12">
-                           <div class="form-group">
-                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                 placeholder="Write Comment"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <button type="submit" class="button btn_1 button-contactForm">Kirim</button>
-                     </div>
-                  </form>
-               </div>
+                    </form>
+                </div>
+                <footer class="w3-container w3-blue w3-border-top w3-padding-16"></footer>
+            </div>
+        </div>
             </div>
          </div>
       </div>
    </section>
-   <!--================Blog Area end =================-->
+   

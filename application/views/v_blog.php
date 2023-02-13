@@ -15,19 +15,11 @@
                                     <p><?=bulan($tgl);?></p>
                                 </a>
                             </div>
-
                             <div class="blog_details">
-                                <a class="d-inline-block" href="<?=base_url()?>blog/detail/<?=$bl->id?>">
-                                  <h2><?=$bl->judul;?>
-                                  </h2>
+                                <a class="d-inline-block" href="blog/detail/<?=$bl->id?>">
+                                    <h2><?=$bl->judul;?></h2>
                                 </a>
-                                <p><?php echo strip_tags(substr(substr($bl->p1,0,200),0,strrpos(substr($bl->p1,0,200),' ')));?></p>
-                                <a href="blog/detail/<?=$bl->id?>">
-                                  Baca Selanjutnya
-                                </a>                                
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
+                                <p><?php echo strip_tags(substr(substr($bl->p1,0,200),0,strrpos(substr($bl->p1,0,200),' ')));?></p>                               
                             </div>
                         </article>
                     <?php

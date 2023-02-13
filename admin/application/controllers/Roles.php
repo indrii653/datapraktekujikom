@@ -52,7 +52,7 @@ class Roles extends BaseController
             
             $data['roleRecords'] = $this->rm->roleListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Roles Listing';
+            $this->global['pageTitle'] = 'Setting : Roles Listing';
             
             $this->loadViews("roles/list", $this->global, $data, NULL);
         }
@@ -69,7 +69,7 @@ class Roles extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Role';
+            $this->global['pageTitle'] = 'Setting : Add New Role';
 
             $this->loadViews("roles/add", $this->global, NULL, NULL);
         }
@@ -160,7 +160,7 @@ class Roles extends BaseController
             $data['roleAccessMatrix'] = json_decode($roleAccessMatrix->access);
             $data['moduleList'] = $this->config->item('moduleList');
             
-            $this->global['pageTitle'] = 'CodeInsect : Edit Role';
+            $this->global['pageTitle'] = 'Setting : Edit Role';
             
             $this->loadViews("roles/edit", $this->global, $data, NULL);
         }

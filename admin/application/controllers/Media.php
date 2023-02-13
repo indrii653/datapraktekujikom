@@ -53,7 +53,7 @@ class Media extends BaseController
             
             $data['records'] = $this->md->mediaListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Media';
+            $this->global['pageTitle'] = 'Setting : Media';
             
             $this->loadViews("media/list", $this->global, $data, NULL);
         }
@@ -70,7 +70,7 @@ class Media extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Media';
+            $this->global['pageTitle'] = 'Setting : Add New Media';
 
             $this->loadViews("media/add", $this->global, NULL, NULL);
         }
@@ -145,7 +145,7 @@ class Media extends BaseController
             
             $data['mediaInfo'] = $this->md->getmediaInfo($mediaId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Media';
+            $this->global['pageTitle'] = 'Setting : Edit Media';
             
             $this->loadViews("media/edit", $this->global, $data, NULL);
         }

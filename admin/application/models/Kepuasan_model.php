@@ -96,10 +96,10 @@ class Kepuasan_model extends CI_Model
         
         return TRUE;
     }
-    function deletekepuasan($k, $id)
+    function deletekepuasan($id)
     {
         $this->db->where('id', $id);
-        $this->db->update('kepuasan', $k);
+        $this->db->delete('kepuasan');
         
         return $this->db->affected_rows();
     }

@@ -54,7 +54,7 @@ class Pengaduan extends BaseController
             
             $data['records'] = $this->p->pengaduanListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Pengaduan';
+            $this->global['pageTitle'] = 'Setting : Pengaduan';
             
             $this->loadViews("pengaduan/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Pengaduan extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Pengaduan';
+            $this->global['pageTitle'] = 'Setting : Add New Pengaduan';
 
             $this->loadViews("pengaduan/add", $this->global, NULL, NULL);
         }
@@ -142,7 +142,7 @@ class Pengaduan extends BaseController
             
             $data['pengaduanInfo'] = $this->p->getpengaduanInfo($pengaduanId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Pengaduan';
+            $this->global['pageTitle'] = 'Setting : Edit Pengaduan';
             
             $this->loadViews("pengaduan/edit", $this->global, $data, NULL);
         }
@@ -201,6 +201,53 @@ class Pengaduan extends BaseController
                 redirect('pengaduan/pengaduanListing');
         }
     }
+    function deletepengaduan()
+    {
+        if(!$this->hasUpdateAccess())
+        {
+            echo(json_encode(array('status'=>'access')));
+        }
+        else
+        {
+            $taskId = $this->input->post('id');
+            $pengaduanInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
+            
+            $result = $this->p->deletepengaduan($taskId, $pengaduanInfo);
+            
+            if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
+            else { echo(json_encode(array('status'=>FALSE))); }
+        }
+    }
+
+       /**
+     * This function is used load task edit information
+     * @param number $taskId : Optional : This is task id
+     */
+    function delete($pengaduanId = NULL)
+    {
+        if(!$this->hasUpdateAccess())
+        {
+            $this->loadThis();
+        }
+        else
+        {
+            if($pengaduanId == null)
+            {
+                redirect('pengaduan/pengaduanListing');
+            }
+            $result = $this->p->deletepengaduan($pengaduanId);
+            if($result == true)
+            {
+                $this->session->set_flashdata('success', 'Data updated successfully');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Data updation failed');
+            }
+        }
+        redirect('pengaduan/pengaduanListing');
+    }
+
 }
 
 ?>

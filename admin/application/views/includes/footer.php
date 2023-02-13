@@ -1,5 +1,3 @@
-
-
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
           <b>Dibuat oleh</b> SMK NEGERI 1 GARUT

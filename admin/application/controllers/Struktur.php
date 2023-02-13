@@ -53,7 +53,7 @@ class Struktur extends BaseController
             
             $data['records'] = $this->s->strukturListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Struktur';
+            $this->global['pageTitle'] = 'Setting: Struktur';
             
             $this->loadViews("struktur/list", $this->global, $data, NULL);
         }
@@ -70,7 +70,7 @@ class Struktur extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Struktur';
+            $this->global['pageTitle'] = 'Setting: Add New Struktur';
 
             $this->loadViews("struktur/add", $this->global, NULL, NULL);
         }
@@ -149,7 +149,7 @@ class Struktur extends BaseController
             
             $data['strukturInfo'] = $this->s->getstrukturInfo($strukturId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Struktur';
+            $this->global['pageTitle'] = 'Setting: Edit Struktur';
             
             $this->loadViews("struktur/edit", $this->global, $data, NULL);
         }

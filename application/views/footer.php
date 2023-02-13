@@ -24,7 +24,7 @@
                         <h4>Informasi Kami</h4>
                         <ul class="corporate-address">
                                     <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone:(0262) 2800763">(0262) 2800763</a></li>
-                                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="Phone:081241855415">+6281-2418-55415 |Layanan Pengaduan</a></li>
+                                    <li><i class="fa fa-phone" aria-hidden="true"></i><a href="https://wa.me/+6281241855415">+6281-2418-55415 |Layanan Pengaduan</a></li>
                                     <li><i class="fa fa-google" aria-hidden="true"></i><a href="mailto:pkmsiliwangi@gmail.com">pkmsiliwangi@gmail.com</a></li>
                                     
                         </ul>

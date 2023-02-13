@@ -18,15 +18,11 @@ class Blog extends BaseController
     {
         parent::__construct();
         $this->load->helper(array('form', 'url'));
-        $this->load->model('blog_model', 'bl');
+        $this->load->model('Blog_model');
         $this->isLoggedIn();
         $this->module = 'blog';
     }
 
-    /**
-     * This is default routing method
-     * It routes to default listing page
-     */
     public function index()
     {
         redirect('blog/blogListing');
@@ -47,14 +43,16 @@ class Blog extends BaseController
             $data['searchText'] = $searchText;
             
             $this->load->library('pagination');
+            $config['per_page'] = 10;
+            $count = $this->Blog_model->blogListingCount($searchText);
+            $config['total_rows'] = $count;
+            $config['base_url'] = base_url().'blog/blogListing';
+            $this->pagination->initialize($config);
+			$last = $this->uri->segment(3);
             
-            $count = $this->bl->blogListingCount($searchText);
-
-			$returns = $this->paginationCompress ( "blogListing/", $count, 10 );
+            $data['records'] = $this->Blog_model->blogListing($searchText, $last, $config['per_page']);
             
-            $data['records'] = $this->bl->blogListing($searchText, $returns["page"], $returns["segment"]);
-            
-            $this->global['pageTitle'] = 'CodeInsect : Blog';
+            $this->global['pageTitle'] = 'Setting : Blog';
             
             $this->loadViews("blog/list", $this->global, $data, NULL);
         }
@@ -71,7 +69,7 @@ class Blog extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Blog';
+            $this->global['pageTitle'] = 'Setting : Add New Blog';
 
             $this->loadViews("blog/add", $this->global, NULL, NULL);
         }
@@ -121,7 +119,7 @@ class Blog extends BaseController
 
                 $blogInfo = array('foto'=>$namafile, 'tgl'=>$tgl,'judul'=>$judul,'p1'=>$p1, 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:s'));
                 
-                $result = $this->bl->addNewblog($blogInfo);
+                $result = $this->Blog_model->addNewblog($blogInfo);
                 
                 if($result == true)
                 {
@@ -155,9 +153,9 @@ class Blog extends BaseController
                 redirect('blog/blogListing');
             }
             
-            $data['blogInfo'] = $this->bl->getblogInfo($blogId);
+            $data['blogInfo'] = $this->Blog_model->getblogInfo($blogId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Blog';
+            $this->global['pageTitle'] = 'Setting : Edit Blog';
             
             $this->loadViews("blog/edit", $this->global, $data, NULL);
         }
@@ -207,7 +205,7 @@ class Blog extends BaseController
 
                 $blogInfo = array('foto'=>$namafile, 'tgl'=>$tgl,'judul'=>$judul,'p1'=>$p1, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
                 
-                $result = $this->bl->editblog($blogInfo, $taskId);
+                $result = $this->Blog_model->editblog($blogInfo, $taskId);
                 
                 if($result == true)
                 {
@@ -234,7 +232,7 @@ class Blog extends BaseController
             $taskId = $this->input->post('id');
             $blogInfo = array('isDeleted'=>1,'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:s'));
             
-            $result = $this->bl->deleteblog($taskId, $blogInfo);
+            $result = $this->Blog_model->deleteblog($taskId, $blogInfo);
             
             if ($result > 0) { echo(json_encode(array('status'=>TRUE))); }
             else { echo(json_encode(array('status'=>FALSE))); }
@@ -257,7 +255,7 @@ class Blog extends BaseController
             {
                 redirect('blog/blogListing');
             }
-            $result = $this->bl->deleteblog($blogId);
+            $result = $this->Blog_model->deleteblog($blogId);
             if($result == true)
             {
                 $this->session->set_flashdata('success', 'Data updated successfully');
@@ -269,51 +267,6 @@ class Blog extends BaseController
         }
         redirect('blog/blogListing');
     }
-    public function index()
-	{
-		$this->load->library('pagination');
-
-        $config['base_url'] = base_url() . 'blog/index';
-        $config['total_rows'] = $this->Blog_model->jumlah_data();
-        $config['per_page'] = 1;
-
-        $config['full_tag_open'] = '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
-        $config['full_tag_close'] = '</ul></nav>';
-
-        $config['first_link'] = 'First';
-        $config['first_tag_open'] = '<li class="page-item">';
-        $config['first_tag_close'] = '</li>';
-
-        $config['last_link'] = 'Last';
-        $config['last_tag_open'] = '<li class="page-item">';
-        $config['last_tag_close'] = '</li>';
-
-        $config['next_link'] = '<i class="ti-angle-right"></i>';
-        $config['next_tag_open'] = '<li class="page-item">';
-        $config['next_tag_close'] = '</li>';
-
-        $config['prev_link'] = '<i class="ti-angle-left"></i>';
-        $config['prev_tag_open'] = '<li class="page-item">';
-        $config['prev_tag_close'] = '</li>';
-
-        $config['cur_tag_open'] = '<li class="page-item active"><a class="page-link" href="#">';
-        $config['cur_tag_close'] = '</a></li>';
-
-        $config['num_tag_open'] = '<li class="page-item">';
-        $config['num_tag_close'] = '</li>';
-
-        $config['attributes'] = array('class' => 'page-link');
-
-        $this->pagination->initialize($config);
-
-        $data['start'] = $this->uri->segment(3);
-
-		
-		$data['blog'] = $this->model_blog->tampil_data($config['per_page'],$data['start'])->result();
-		$this->load->view('header');
-		$this->load->view('blog',$data);
-		$this->load->view('footer');
-	}
 }
 
 ?>

@@ -53,7 +53,7 @@ class Booking extends BaseController
             
             $data['records'] = $this->bm->bookingListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Booking';
+            $this->global['pageTitle'] = 'Setting : Booking';
             
             $this->loadViews("booking/list", $this->global, $data, NULL);
         }
@@ -70,7 +70,7 @@ class Booking extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Booking';
+            $this->global['pageTitle'] = 'Setting : Add New Booking';
 
             $this->loadViews("booking/add", $this->global, NULL, NULL);
         }
@@ -136,7 +136,7 @@ class Booking extends BaseController
             
             $data['bookingInfo'] = $this->bm->getBookingInfo($bookingId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Booking';
+            $this->global['pageTitle'] = 'Setting : Edit Booking';
             
             $this->loadViews("booking/edit", $this->global, $data, NULL);
         }

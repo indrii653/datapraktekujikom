@@ -32,7 +32,7 @@ class Blog extends CI_Controller {
 
         $config['base_url'] = base_url() . 'blog/index';
         $config['total_rows'] = $this->M_blog->jumlah_data();
-        $config['per_page'] = 1;
+        $config['per_page'] = 4;
 
         $config['full_tag_open'] = '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
         $config['full_tag_close'] = '</ul></nav>';

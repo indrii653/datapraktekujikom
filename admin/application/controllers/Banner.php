@@ -54,7 +54,7 @@ class Banner extends BaseController
             
             $data['records'] = $this->bn->bannerListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Banner';
+            $this->global['pageTitle'] = 'Setting : Banner';
             
             $this->loadViews("banner/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Banner extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Banner';
+            $this->global['pageTitle'] = 'Setting : Add New Banner';
 
             $this->loadViews("banner/add", $this->global, NULL, NULL);
         }
@@ -129,7 +129,7 @@ class Banner extends BaseController
             
             $data['bannerInfo'] = $this->bn->getBannerInfo($bannerId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Banner';
+            $this->global['pageTitle'] = 'Setting : Edit Banner';
             
             $this->loadViews("banner/edit", $this->global, $data, NULL);
         }

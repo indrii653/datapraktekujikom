@@ -54,7 +54,7 @@ class Penghargaan extends BaseController
             
             $data['records'] = $this->p->penghargaanListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Penghargaan';
+            $this->global['pageTitle'] = 'Setting : Penghargaan';
             
             $this->loadViews("penghargaan/list", $this->global, $data, NULL);
         }
@@ -71,7 +71,7 @@ class Penghargaan extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Penghargaan';
+            $this->global['pageTitle'] = 'Setting : Add New Penghargaan';
 
             $this->loadViews("penghargaan/add", $this->global, NULL, NULL);
         }
@@ -144,7 +144,7 @@ class Penghargaan extends BaseController
             
             $data['penghargaanInfo'] = $this->p->getpenghargaanInfo($penghargaanId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Penghargaan';
+            $this->global['pageTitle'] = 'Setting : Edit Penghargaan';
             
             $this->loadViews("penghargaan/edit", $this->global, $data, NULL);
         }

@@ -53,7 +53,7 @@ class Wilayah extends BaseController
             
             $data['records'] = $this->w->wilayahListing($searchText, $rePrns["page"], $rePrns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Wilayah Puskesmas';
+            $this->global['pageTitle'] = 'Setting : Wilayah Puskesmas';
             
             $this->loadViews("wilayah/list", $this->global, $data, NULL);
         }
@@ -70,7 +70,7 @@ class Wilayah extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Data';
+            $this->global['pageTitle'] = 'Setting : Add New Data';
 
             $this->loadViews("wilayah/add", $this->global, NULL, NULL);
         }
@@ -166,7 +166,7 @@ class Wilayah extends BaseController
             
             $data['wilayahInfo'] = $this->w->getwilayahInfo($wilayahId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Data';
+            $this->global['pageTitle'] = 'Setting : Edit Data';
             
             $this->loadViews("wilayah/edit", $this->global, $data, NULL);
         }

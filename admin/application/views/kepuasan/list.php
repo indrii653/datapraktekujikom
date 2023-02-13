@@ -77,6 +77,7 @@
                         <td><img src="<?php echo base_url(); ?>../img/blog/<?=$record->puas?>" width="100px"></td>
                         <td class="text-center">
                             <a class="btn btn-sm btn-info" href="<?php echo base_url().'kepuasan/edit/'.$record->id; ?>" title="Edit"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-sm btn-danger deletekepuasan" href="<?php echo base_url().'kepuasan/delete/'.$record->id; ?>" data-id="<?php echo $record->id; ?>" title="Delete"><i class="fa fa-trash"></i></a>                       
                         </td>
                     </tr>
                     <?php

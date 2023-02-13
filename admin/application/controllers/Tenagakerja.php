@@ -53,7 +53,7 @@ class Tenagakerja extends BaseController
             
             $data['records'] = $this->tk->tenagaListing($searchText, $returns["page"], $returns["segment"]);
             
-            $this->global['pageTitle'] = 'CodeInsect : Tenaga Kerja';
+            $this->global['pageTitle'] = 'Setting: Tenaga Kerja';
             
             $this->loadViews("tenagakerja/list", $this->global, $data, NULL);
         }
@@ -70,7 +70,7 @@ class Tenagakerja extends BaseController
         }
         else
         {
-            $this->global['pageTitle'] = 'CodeInsect : Add New Tenaga';
+            $this->global['pageTitle'] = 'Setting: Add New Tenaga';
 
             $this->loadViews("tenagakerja/add", $this->global, NULL, NULL);
         }
@@ -149,7 +149,7 @@ class Tenagakerja extends BaseController
             
             $data['tenagaInfo'] = $this->tk->gettenagaInfo($tenagakerjaId);
 
-            $this->global['pageTitle'] = 'CodeInsect : Edit Tenaga';
+            $this->global['pageTitle'] = 'Setting: Edit Tenaga';
             
             $this->loadViews("tenagakerja/edit", $this->global, $data, NULL);
         }
