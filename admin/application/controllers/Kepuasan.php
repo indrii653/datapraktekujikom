@@ -91,7 +91,7 @@ class Kepuasan extends BaseController
            
             $this->load->library('form_validation');
             
-                $taskId = $this->input->post('taskId');
+               
                 $config['upload_path']          = '../img/';
                 $config['allowed_types']        = 'gif|jpg|jpeg|png';
                 $config['file_name']            = md5(date('Y-m-d H:i:s:u'));
@@ -107,6 +107,7 @@ class Kepuasan extends BaseController
                     // $ambilnama=$this->k->getkepuasanInfo($taskId);                 
                     // $namafile = $ambilnama->img;
                     echo $this->upload->display_errors();
+                    return;
                 } else {
                     $uploaded_data = $this->upload->data();
                     $namafile = $uploaded_data['file_name'];
@@ -171,7 +172,7 @@ class Kepuasan extends BaseController
             $this->load->library('form_validation');
             
                 $taskId = $this->input->post('taskId');
-                $config['upload_path']          = '../img/blog/';
+                $config['upload_path']          = '../img/';
                 $config['allowed_types']        = 'gif|jpg|jpeg|png';
                 $config['file_name']            = md5(date('Y-m-d H:i:s:u'));
                 $config['overwrite']            = true;

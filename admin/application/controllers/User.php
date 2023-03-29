@@ -139,11 +139,12 @@ class User extends BaseController
                 
                 if($result > 0){
                     $this->session->set_flashdata('success', 'New User created successfully');
+                    return redirect('userListing');
                 } else {
                     $this->session->set_flashdata('error', 'User creation failed');
                 }
                 
-                redirect('addNew');
+                redirect('userListing');
             }
         }
     }
@@ -384,7 +385,7 @@ class User extends BaseController
         {
             $oldPassword = $this->input->post('oldPassword');
             $newPassword = $this->input->post('newPassword');
-            
+            echo $this->vendorId;
             $resultPas = $this->user_model->matchOldPassword($this->vendorId, $oldPassword);
             
             if(empty($resultPas))

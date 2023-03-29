@@ -20,7 +20,9 @@
                     </div><!-- /.box-header -->
                     <!-- form start -->
                     <?php $this->load->helper("form"); ?>
-                    <form role="form" id="addkepuasan" action="<?php echo base_url() ?>kepuasan/addNewkepuasan" method="post" role="form">
+                    <?php echo form_open_multipart('kepuasan/addNewkepuasan');?>
+
+                
                         <div class="box-body">
                         <div class="row">
                                 <div class="col-md-12"> 
